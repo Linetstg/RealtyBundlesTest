@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Linetstg/RealtyBundlesTest/static/css/main.26aef64a.css",
-    "main.js": "/Linetstg/RealtyBundlesTest/static/js/main.a58832ec.js",
-    "index.html": "/Linetstg/RealtyBundlesTest/index.html",
-    "main.26aef64a.css.map": "/Linetstg/RealtyBundlesTest/static/css/main.26aef64a.css.map",
-    "main.a58832ec.js.map": "/Linetstg/RealtyBundlesTest/static/js/main.a58832ec.js.map"
+    "main.css": "/RealtyBundlesTest/static/css/main.26aef64a.css",
+    "main.js": "/RealtyBundlesTest/static/js/main.a58832ec.js",
+    "index.html": "/RealtyBundlesTest/index.html",
+    "main.26aef64a.css.map": "/RealtyBundlesTest/static/css/main.26aef64a.css.map",
+    "main.a58832ec.js.map": "/RealtyBundlesTest/static/js/main.a58832ec.js.map"
   },
   "entrypoints": [
     "static/css/main.26aef64a.css",
