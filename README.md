@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-[DEMO LINK](https://linetstg.github.io/article-codebridge/)
+[DEMO LINK](https://linetstg.github.io/RealtyBundlesTest/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
