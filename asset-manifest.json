@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/RealtyBundlesTest/static/css/main.26aef64a.css",
-    "main.js": "/RealtyBundlesTest/static/js/main.a58832ec.js",
+    "main.js": "/RealtyBundlesTest/static/js/main.78b20b21.js",
     "index.html": "/RealtyBundlesTest/index.html",
     "main.26aef64a.css.map": "/RealtyBundlesTest/static/css/main.26aef64a.css.map",
-    "main.a58832ec.js.map": "/RealtyBundlesTest/static/js/main.a58832ec.js.map"
+    "main.78b20b21.js.map": "/RealtyBundlesTest/static/js/main.78b20b21.js.map"
   },
   "entrypoints": [
     "static/css/main.26aef64a.css",
-    "static/js/main.a58832ec.js"
+    "static/js/main.78b20b21.js"
   ]
 }
