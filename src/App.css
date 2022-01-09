@@ -1,5 +1,42 @@
-.App {
-  text-align: center;
-  margin: 10px;
+.body {
+  margin: 0;
 }
+
+.detaile_page {
+  background-color: white;
+
+  
+} 
+
+.detaile_page--info {
+    position: absolute;
+    background: white;
+    border: 1px solid rgba(234, 234, 234, 1);
+    margin-left: 75px;
+    margin-right: 75px;
+    right: 25px;
+    left: 25px;
+    margin-bottom: 100px;
+    top: 150px;
+    box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.05);
+  }
+  
+.detaile_page--title {
+    margin-top: 35px;
+    text-align: center;
+    margin-left: 75px;
+    margin-right: 75px;
+    font-family: Montserrat;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 29.26px;
+    }
+  
+.detaile_page--summary {
+    padding: 50px;
+    font-family: Montserrat;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 27px;
+    }
 

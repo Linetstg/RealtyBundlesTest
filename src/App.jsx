@@ -17,7 +17,8 @@ const translationEn = {
   Snowfall is expected in Kyiv. Rainfall, according to weather forecasters, will begin on the evening of January 8 and will last all day on January 9.
   In this regard, according to the Kyiv City State Administration, from 7:00 on January 9, the entry of large vehicles into the capital will be prohibited.
   It is noted that special equipment of road workers will start treatment of roads, bridges and sidewalks with anti-ice means before the beginning of precipitation.`,
-  lang: "Language"
+  lang: "Language",
+  city: "City"
 }
 
 const translationHeb = {
@@ -27,7 +28,8 @@ const translationHeb = {
   צפוי לרדת שלג בקייב. גשמים, על פי חזאי מזג האוויר, יתחילו בערב ה-8 בינואר ויימשכו כל היום ב-9 בינואר.
   בהקשר זה, על פי מינהל מדינת קייב, החל מהשעה 7:00 ב-9 בינואר, תיאסר כניסת כלי רכב גדולים לבירה.
   יצוין כי ציוד מיוחד של עובדי הכביש יתחיל טיפול בכבישים, גשרים ומדרכות באמצעי אנטי קרח לפני תחילת המשקעים.`,
-  lang: "שפה"
+  lang: "שפה",
+  city: "עִיר"
 }
 
 
@@ -49,12 +51,13 @@ function App() {
   const [news, setNews] = useState([]);
   const [temp, setTemp] = useState(false);
   const { t } = useTranslation();
+  const [city, setCity] = useState('703448')
   let componentMounted = true;
 
 
   useEffect(() => {
     const fetchWeather = async () => {
-      const response = await fetch('https://api.openweathermap.org/data/2.5/weather?id=703448&appid=67e3ff78e41740c6b719b4d4c7c2109d')
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${city}&appid=67e3ff78e41740c6b719b4d4c7c2109d`)
       if (componentMounted) {
         setNews(await response.json());
       }
@@ -65,7 +68,7 @@ function App() {
 
     }
     fetchWeather()
-  }, []);
+  }, [city]);
 
   let mainTemp;
 
@@ -76,7 +79,7 @@ function App() {
 
 
   const handleChange = (event) => {
-    i18n.changeLanguage(event.target.value)
+    i18n.changeLanguage(event.target.value);
 
   };
 
@@ -84,16 +87,20 @@ function App() {
     setTemp(event.target.checked);
   };
 
+  const handleChangeCity = (event) => {
+    setCity(event.target.value);
+  }
+
 
   return (
     <div className="App">
       <Box sx={{ width: 120 }}>
         <FormControl fullWidth>
-          <InputLabel variant="standard" id="select-label">
+          <InputLabel variant="standard" id="select-lang">
             {t('lang')}
           </InputLabel>
           <NativeSelect
-            labelId="select-label"
+            labelId="select-lang"
             // defaultValue={}
             onChange={handleChange}
           >
@@ -104,16 +111,35 @@ function App() {
         </FormControl>
       </Box>
 
-      <div>
-        <h2>{t('welcome')}</h2>
-        <p>{t('sample')}</p>
+      <Box sx={{ width: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel variant="standard" id="select-city">
+            {t('city')}
+          </InputLabel>
+          <NativeSelect
+            labelId="select-city"
+            
+            onChange={handleChangeCity}
+          >
+            <option value={'703448'}>Kyiv</option>
+            <option value={'281184'}>Jerusalem</option>
+            <option value={'2643743'}>London</option>
+
+          </NativeSelect>
+        </FormControl>
+      </Box>
+
+    
+
+      <div className="detaile_page--info"> 
+        <h2 className="detaile_page--title">{t('welcome')}</h2>
+        <p className="detaile_page--summary">{t('sample')}</p>
 
         <p>{news.name}</p>
         <p>{temp ? `${mainTemp} `: '' }</p>
         <Checkbox
           checked={temp}
           onChange={handleChangeTemp}
-          
         />
       </div>
     </div>
