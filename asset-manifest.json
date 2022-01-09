@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/RealtyBundlesTest/static/css/main.26aef64a.css",
-    "main.js": "/RealtyBundlesTest/static/js/main.f490891d.js",
+    "main.css": "/RealtyBundlesTest/static/css/main.9f72d7a4.css",
+    "main.js": "/RealtyBundlesTest/static/js/main.ab9e0d86.js",
     "index.html": "/RealtyBundlesTest/index.html",
-    "main.26aef64a.css.map": "/RealtyBundlesTest/static/css/main.26aef64a.css.map",
-    "main.f490891d.js.map": "/RealtyBundlesTest/static/js/main.f490891d.js.map"
+    "main.9f72d7a4.css.map": "/RealtyBundlesTest/static/css/main.9f72d7a4.css.map",
+    "main.ab9e0d86.js.map": "/RealtyBundlesTest/static/js/main.ab9e0d86.js.map"
   },
   "entrypoints": [
-    "static/css/main.26aef64a.css",
-    "static/js/main.f490891d.js"
+    "static/css/main.9f72d7a4.css",
+    "static/js/main.ab9e0d86.js"
   ]
 }
