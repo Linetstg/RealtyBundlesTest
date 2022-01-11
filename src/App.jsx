@@ -12,22 +12,25 @@ import { initReactI18next } from 'react-i18next';
 import { useTranslation } from 'react-i18next';
 
 const translationEn = {
-  welcome: "It is snowing in Kyiv: when to wait and what will be banned from January 9",
-  sample: `Drivers are asked not to use personal cars during the snowfall if possible.
-  Snowfall is expected in Kyiv. Rainfall, according to weather forecasters, will begin on the evening of January 8 and will last all day on January 9.
-  In this regard, according to the Kyiv City State Administration, from 7:00 on January 9, the entry of large vehicles into the capital will be prohibited.
-  It is noted that special equipment of road workers will start treatment of roads, bridges and sidewalks with anti-ice means before the beginning of precipitation.`,
+  welcome: "Information about the weather in the city ",
+  information: `Access current weather data for any location including over 200,000 cities.
+  We collect and process weather data from different sources such as global and local weather models, satellites, radars and a vast network of weather stations`,
+  temperature: `Average air temperature`,
+  humidity: `Humidity`,
+  pressure: `Atmosphere pressure`,
+  addInfo: `Additional Information`,
   lang: "Language",
   city: "City"
 }
 
 const translationHeb = {
-  welcome: "יורד שלג בקייב: מתי לחכות ומה ייאסר החל מה-9 בינואר",
-  sample: `
-  הנהגים מתבקשים לא להשתמש במכוניות אישיות במהלך השלג במידת האפשר.
-  צפוי לרדת שלג בקייב. גשמים, על פי חזאי מזג האוויר, יתחילו בערב ה-8 בינואר ויימשכו כל היום ב-9 בינואר.
-  בהקשר זה, על פי מינהל מדינת קייב, החל מהשעה 7:00 ב-9 בינואר, תיאסר כניסת כלי רכב גדולים לבירה.
-  יצוין כי ציוד מיוחד של עובדי הכביש יתחיל טיפול בכבישים, גשרים ומדרכות באמצעי אנטי קרח לפני תחילת המשקעים.`,
+  welcome: "מידע על מזג האוויר בעיר ",
+  information: `גישה לנתוני מזג אוויר עדכניים עבור כל מיקום כולל למעלה מ-200,000 ערים
+  אנו אוספים ומעבדים נתוני מזג אוויר ממקורות שונים כגון מודלים של מזג אוויר גלובליים ומקומיים, לוויינים, מכ"מים ורשת עצומה של תחנות מזג אוויר`,
+  temperature: `טמפרטורת אוויר ממוצעת`,
+  humidity: `לחות אוויר`,
+  pressure: `לחץ אטמוספירה`,
+  addInfo: `מידע נוסף`,
   lang: "שפה",
   city: "עִיר"
 }
@@ -70,10 +73,12 @@ function App() {
     fetchWeather()
   }, [city]);
 
+  console.log(news)
+
   let mainTemp;
 
-  if(temp) {
-     mainTemp = (news.main.temp - 273.15).toFixed(2)
+  if (temp) {
+    mainTemp = (news.main.temp - 273.15).toFixed(2)
   }
 
 
@@ -93,54 +98,65 @@ function App() {
 
 
   return (
-    <div className="App">
-      <Box sx={{ width: 120 }}>
-        <FormControl fullWidth>
-          <InputLabel variant="standard" id="select-lang">
-            {t('lang')}
-          </InputLabel>
-          <NativeSelect
-            labelId="select-lang"
-            // defaultValue={}
-            onChange={handleChange}
-          >
-            <option value={'en'}>English</option>
-            <option value={'heb'}>עִברִית</option>
+    <div className="container">
+      <div className='settings-box'>
+        <Box sx={{ width: 120}}>
+          <FormControl fullWidth>
+            <InputLabel variant="standard" id="select-lang">
+              {t('lang')}
+            </InputLabel>
+            <NativeSelect
+              labelId="select-lang"
+              onChange={handleChange}
+            >
+              <option value={'en'}>English</option>
+              <option value={'heb'}>עִברִית</option>
 
-          </NativeSelect>
-        </FormControl>
-      </Box>
+            </NativeSelect>
+          </FormControl>
+        </Box>
 
-      <Box sx={{ width: 120 }}>
-        <FormControl fullWidth>
-          <InputLabel variant="standard" id="select-city">
-            {t('city')}
-          </InputLabel>
-          <NativeSelect
-            labelId="select-city"
-            
-            onChange={handleChangeCity}
-          >
-            <option value={'703448'}>Kyiv</option>
-            <option value={'281184'}>Jerusalem</option>
-            <option value={'2643743'}>London</option>
+        <Box sx={{ width: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel variant="standard" id="select-city">
+              {t('city')}
+            </InputLabel>
+            <NativeSelect
+              labelId="select-city"
 
-          </NativeSelect>
-        </FormControl>
-      </Box>
+              onChange={handleChangeCity}
+            >
+              <option value={'703448'}>Kyiv</option>
+              <option value={'281184'}>Jerusalem</option>
+              <option value={'2643743'}>London</option>
 
-    
+            </NativeSelect>
+          </FormControl>
+        </Box>
+        <div>
+          {t('addInfo')}
+          <Checkbox
+            checked={temp}
+            onChange={handleChangeTemp}
+          />
+        </div>
 
-      <div className="detaile_page--info"> 
-        <h2 className="detaile_page--title">{t('welcome')}</h2>
-        <p className="detaile_page--summary">{t('sample')}</p>
 
-        <p>{news.name}</p>
-        <p>{temp ? `${mainTemp} `: '' }</p>
-        <Checkbox
-          checked={temp}
-          onChange={handleChangeTemp}
-        />
+      </div>
+      <div>
+        <div className="detaile_page--info">
+          <h2 className="detaile_page--title">{t('welcome')} {news.name}</h2>
+          <p className="detaile_page--summary">{t('information')}</p>
+          {temp
+            ? <>
+              <p className="detaile_page--data">{t('temperature')} {mainTemp + ` \u00b0C`} </p>
+              <p className="detaile_page--data">{t('humidity')} {news.main.humidity + `%`}</p>
+              <p className="detaile_page--data">{t('pressure')} {news.main.pressure}</p>
+            </>
+
+            : <p></p>
+          }
+        </div>
       </div>
     </div>
   );
